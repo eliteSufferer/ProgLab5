@@ -3,6 +3,7 @@ package moviesClasses;
 import Enums.Color;
 import Enums.MovieGenre;
 import Enums.MpaaRating;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -39,7 +40,13 @@ public class Movie implements Comparable<Object>{
      @param mpaaRating the MPAA rating of the movie
      @param director the director of the movie
      */
-    public Movie(Integer id, String name, Coordinates coordinates, LocalDate creationDate, int oscarsCount, Integer length, MovieGenre genre, MpaaRating mpaaRating, Person director){
+
+    @JsonCreator
+    public Movie(@JsonProperty("id") Integer id, @JsonProperty(value = "name") String name,
+                 @JsonProperty("coordinates") Coordinates coordinates,
+                 @JsonProperty("creationDate") LocalDate creationDate, @JsonProperty("oscarsCount") int oscarsCount,
+                 @JsonProperty("length") Integer length, @JsonProperty("genre") MovieGenre genre,
+                 @JsonProperty("mpaaRating") MpaaRating mpaaRating, @JsonProperty("director") Person director){
         this.id = id;
         this.name = name;
         this.coordinates = coordinates;
@@ -103,47 +110,48 @@ public class Movie implements Comparable<Object>{
      */
     public Movie(){}
 
-    @JsonProperty("id")
+
     public Integer getId(){
         return id;
     }
 
-    @JsonProperty(value = "name", required = true)
+
     public String getName(){
         return name;
     }
 
-    @JsonProperty("length")
+
     public Integer getLength(){
         return length;
     }
 
-    @JsonProperty("oscarsCount")
+
+
     public int getOscarsCount() {
         return oscarsCount;
     }
 
-    @JsonProperty("genre")
+
     public MovieGenre getGenre(){
         return genre;
     }
 
-    @JsonProperty("coordinates")
+
     public Coordinates getCoordinates(){
         return coordinates;
     }
 
-    @JsonProperty("creationDate")
+
     public LocalDate getCreationDate(){
         return creationDate;
     }
 
-    @JsonProperty("mpaaRating")
+
     public MpaaRating getMpaaRating(){
         return mpaaRating;
     }
 
-    @JsonProperty("director")
+
     public Person getDirector(){
         return director;
     }
@@ -157,7 +165,7 @@ public class Movie implements Comparable<Object>{
     public String[] getInstance(){
         return new String[]{"id=" + id + ", name=" + name + ", coordinates=[" + "x:" + coordinates.getX() + ", y:" + coordinates.getY() + "]" + ", " +
                 "creationDate=" + creationDate + ", oscarsCount=" + oscarsCount + ", length=" + length + ", genre=" + genre + ", " +
-                "mpaaRating=" + mpaaRating + ", director: [" + director.getName() + ", " +director.getPassportID() + ", " + director.getBirthday() + ", " +
+                "mpaaRating=" + mpaaRating + ", director: [" + director.getName() + ", " +director.getPassportID() + ", " + director.getHairColor() + ", " + director.getBirthday() + ", " +
                 "location:[" + director.getLocation().getX() + ", " + director.getLocation().getY() + ", " + director.getLocation().getZ() + ", " + director.getLocation().getName() + "]]" + "}"};
     }
 

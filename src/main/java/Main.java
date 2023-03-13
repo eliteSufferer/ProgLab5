@@ -1,3 +1,4 @@
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import functionalClasses.CommandManager;
 import functionalClasses.Executor;
 import functionalClasses.FileManager;
@@ -5,6 +6,8 @@ import functionalClasses.FilePathInitializer;
 import moviesClasses.Movies;
 
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -26,6 +29,9 @@ public class Main {
                 return;
             }
 
+            FilePathInitializer.formPath(args);
+
+
 
             //FilePathInitializer.formPath(new Scanner(System.in).nextLine().split(" "));
 
@@ -33,7 +39,8 @@ public class Main {
 
             //Movies movies = new Movies();
             Movies movies = FileManager.fill(args);
-
+//            assert movies != null;
+//            System.out.println(movies.getMovies());
             CommandManager.setMovies(movies);
             Executor.setMovies(movies);
             FileManager.manageClass(movies);
@@ -43,8 +50,8 @@ public class Main {
                 CommandManager.startNewAction(CommandManager.getExecutedCommand());
                 CommandManager.suggestNewAction();
             }
-        } catch (Exception | ExceptionInInitializerError e) {
-            System.out.println("Проверьте, что правильно указали название (адрес) файла, из которого считывается коллекция");
+        } catch (ExceptionInInitializerError e) {
+            System.out.println("Произошла ошибка при чтении файла");
         }
     }
 }

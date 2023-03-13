@@ -1,6 +1,7 @@
 package moviesClasses;
 
 import Enums.Color;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDate;
@@ -12,15 +13,15 @@ import java.util.Optional;
  */
 public class Person{
 
-    @JsonProperty(value = "name", required = true)
+
     private String name;
-    @JsonProperty("birthday")
+
     private LocalDate birthday;
-    @JsonProperty("passportID")
+
     private String passportID;
-    @JsonProperty("hairColor")
+
     private Color hairColor;
-    @JsonProperty(value = "location", required = true)
+
     private Location location;
 
 
@@ -33,7 +34,10 @@ public class Person{
      * @param hairColor the hair color of the person
      * @param location the location of the person
      */
-    public Person(String name, LocalDate birthday, String passportID, Color hairColor, Location location){
+    @JsonCreator
+    public Person(@JsonProperty(value = "name") String name, @JsonProperty("birthday") LocalDate birthday,
+                  @JsonProperty("passportID") String passportID,
+                  @JsonProperty("hairColor") Color hairColor, @JsonProperty(value = "location") Location location){
         this.name = name;
         this.birthday = birthday;
         this.passportID = passportID;

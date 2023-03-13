@@ -1,7 +1,7 @@
 package moviesClasses;
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.Optional;
 /**
 
  The Location class represents the coordinates of a person location and a name of a place where he is located.
@@ -21,7 +21,9 @@ public class Location{
      @param z the z coordinate
      @param name the name of the location
      */
-    public Location(float x, Integer y, Float z, String name){
+    @JsonCreator
+    public Location(@JsonProperty(value = "x") float x, @JsonProperty(value = "y") Integer y,
+                    @JsonProperty(value = "z") Float z, @JsonProperty(value = "name") String name){
         this.x = x;
         this.y = y;
         this.z = z;
@@ -33,22 +35,22 @@ public class Location{
      */
     public Location(){}
 
-    @JsonProperty(value = "x", required = true)
+
     public float getX(){
         return x;
     }
 
-    @JsonProperty(value = "y", required = true)
+
     public Integer getY(){
         return y;
     }
 
-    @JsonProperty(value = "z", required = true)
+
     public Float getZ(){
         return z;
     }
 
-    @JsonProperty(value = "name")
+
     public String getName(){
         return name;
     }

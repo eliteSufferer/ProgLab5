@@ -1,5 +1,6 @@
 package moviesClasses;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import functionalClasses.FilePathInitializer;
 
@@ -23,7 +24,8 @@ public class Coordinates {
      @param x the horizontal coordinate value of the new Coordinates object
      @param y the vertical coordinate value of the new Coordinates object
      */
-    public Coordinates(double x, float y) {
+    @JsonCreator
+    public Coordinates(@JsonProperty(value = "x") double x, @JsonProperty(value = "y") float y) {
         this.x = x;
         this.y = y;
     }
@@ -36,7 +38,7 @@ public class Coordinates {
      Returns the horizontal coordinate value of this Coordinates object.
      @return the value of the x field
      */
-    @JsonProperty(value = "x", required = true)
+
     public double getX(){
         return x;
     }
@@ -46,7 +48,7 @@ public class Coordinates {
      Returns the vertical coordinate value of this Coordinates object.
      @return the value of the y field
      */
-    @JsonProperty(value = "y", required = true)
+
     public float getY(){
         return y;
     }

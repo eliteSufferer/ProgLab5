@@ -3,10 +3,12 @@ package functionalClasses;
 import Enums.Color;
 import Enums.MovieGenre;
 import Enums.MpaaRating;
+import com.sun.tools.javac.Main;
 import moviesClasses.Movie;
 import moviesClasses.Movies;
 
 import java.io.*;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
@@ -95,21 +97,24 @@ public class CommandManager {
     /**
 
      Prompts the user to enter a command and sets the current command.
-     @throws IOException if an I/O error occurs
      */
-    public static void suggestNewAction() throws IOException {
-//        System.out.println();
-        System.out.println("Введите команду. Чтобы узнать перечень доступных команд введите help");
-        currentCommand = chosenScanner.nextLine();
+    public static void suggestNewAction(){
+        try {
+            System.out.println("Введите команду. Чтобы узнать перечень доступных команд введите help");
+            currentCommand = chosenScanner.nextLine();
+        } catch (NoSuchElementException e){
+            System.out.println("Недопустимая строка");
+            System.exit(0);
+        }
+
     }
 
     /**
 
      Executes the specified command and performs the corresponding operation.
      @param executedCommand the command to execute
-     @throws Exception if an error occurs while executing the command
      */
-    public static void startNewAction(String executedCommand) throws Exception {
+    public static void startNewAction(String executedCommand){
         try {
             Executor.formCommandHistory(executedCommand.split(" ")[0]);
             if (Objects.equals(executedCommand.split(" ")[0], "execute_script") && !chosenScanner.equals(new Scanner(System.in)) && executedFiles.contains(executedCommand.split(" ")[1])) {
@@ -163,8 +168,11 @@ public class CommandManager {
                 case("print_descending") -> Executor.printDescending();
                 default -> System.out.println("Введите команду из доступного перечня");
             }
-        } catch (Exception e) {
-            System.out.println("Oops");
+        } catch (NoSuchFileException e){
+            System.out.println("Такого файла не существует");
+        }
+        catch (Exception e) {
+            System.out.println("Ошибка при выполнении команды");;
         }
 
     }
@@ -216,8 +224,6 @@ public class CommandManager {
                         }
 
                         case ("LocalDate") -> {
-                            Pattern pattern = Pattern.compile("^\\d{4}-\\d{2}-\\d{2}$");
-                            Matcher matcher = pattern.matcher(line);
                             try {
                                 LocalDate parsedValue = LocalDate.parse(line);
                                 answers.put(step, parsedValue);
@@ -242,7 +248,7 @@ public class CommandManager {
                             if ((settings.get(step).getKey() == 0 || settings.get(step).getKey() == 7 || settings.get(step).getKey() == 9) && line.trim().isEmpty()) {
                                 System.out.println("Значение не может быть пустым");
                             } else {
-                                if (settings.get(step).getKey() == 8 && line.length() < 10) {
+                                if (settings.get(step).getKey() == 9 && line.length() < 10) {
                                     System.out.println("Значение должно состоять не менее чем из 10 символов");
                                 } else {
                                     answers.put(step, line);

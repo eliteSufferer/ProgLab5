@@ -1,6 +1,6 @@
 package validators;
 
-public class ValidateCoords {
+public class CoordsValidator {
     public static boolean isValidX(double x){
         return x > -201;
     }

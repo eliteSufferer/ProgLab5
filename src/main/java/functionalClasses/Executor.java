@@ -42,7 +42,6 @@ public class Executor {
         }
 
         movies.getMovies().add(new Movie(newID, data));
-        System.out.println(movies.getMovies());
     }
 
 
