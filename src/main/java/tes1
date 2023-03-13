@@ -1,0 +1,4 @@
+show
+execute_script C:\Users\Sergey\IdeaProjects\Laba5\src\main\java\test2
+history
+print_descending
