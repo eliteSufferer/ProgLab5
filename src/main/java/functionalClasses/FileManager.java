@@ -91,25 +91,18 @@ public class FileManager {
         FileManager.movies = movies;
     }
 
-    private static int countLines(String file){
-        int lines = 0;
-        Scanner sc = new Scanner(file);
-        while (sc.hasNextLine()){
-            lines ++;
-        }
-        return lines;
-    }
     /**
      This method reads a file and executes the commands line by line.
-     @param fileScanner The scanner object for the file.
+     @param bufferedReader The scanner object for the file.
      @param fileName The name of the file.
      */
-    public static void readFile(Scanner fileScanner, String fileName){
+    //public static void readFile(Scanner fileScanner, String fileName){
+    public static void readFile(BufferedReader bufferedReader, String fileName) throws IOException {
         try {
             String line;
             boolean shouldAdd = false;
-            while (fileScanner.hasNextLine()) {
-                line = fileScanner.nextLine();
+            while (bufferedReader.ready()) {
+                line = bufferedReader.readLine();
                 if (line.equals("add")) {
                     shouldAdd = true;
                     continue;
@@ -118,10 +111,11 @@ public class FileManager {
                     for (int i = 0; i < 15; i++) {
                         answers.put(i, line);
                         AddFromFileValidator.checkAnswers(i, answers);
-                        line = fileScanner.nextLine();
+                        line = bufferedReader.readLine();
                     }
                     shouldAdd = false;
                     Executor.addMovie(answers);
+
                 }
                 else {
                     CommandManager.startNewAction(line);
@@ -131,16 +125,20 @@ public class FileManager {
         catch (InvalidFieldException e){
             System.out.println(e.getMessage());
         }
+        catch (NumberFormatException e){
+            System.out.println("Неверный формат данных, проверьте порядок");
+        }
         catch (NoSuchElementException e){
             System.out.println("Достигнут конец файла");
         }
-        catch (RuntimeException e){
+        catch (IOException e) {
             System.out.println("Ошибка при чтении файла");
         }
 
-        fileScanner.close();
+        bufferedReader.close();
         CommandManager.getExecutedFiles().remove(fileName);
-        CommandManager.chosenScanner = new Scanner(System.in);
+        //CommandManager.chosenScanner = new Scanner(System.in);
+        CommandManager.reader = new BufferedReader(new InputStreamReader(new BufferedInputStream(System.in)));
     }
 
 

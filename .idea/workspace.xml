@@ -9,17 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07f85c5b-ddba-4e1c-8aad-654647c8b0c6" name="Changes" comment="added main files">
-      <change afterPath="$PROJECT_DIR$/src/main/java/functionalClasses/CommandList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/functionalClasses/Settings.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/validators/AddFromFileValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="07f85c5b-ddba-4e1c-8aad-654647c8b0c6" name="Changes" comment="Added validation and adding from file">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/functionalClasses/CommandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/functionalClasses/CommandManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/functionalClasses/Executor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/functionalClasses/Executor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/functionalClasses/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/functionalClasses/FileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/functionalClasses/test.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/functionalClasses/test.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/moviesClasses/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/moviesClasses/Movie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/functionalClasses/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/functionalClasses/Settings.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +73,7 @@
       <option name="presentableId" value="Default" />
       <updated>1678625781082</updated>
       <workItem from="1678625782577" duration="71700000" />
-      <workItem from="1678817226638" duration="16646000" />
+      <workItem from="1678817226638" duration="18833000" />
     </task>
     <task id="LOCAL-00001" summary="added main files">
       <created>1678719009985</created>
@@ -88,7 +82,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678719009985</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added validation and adding from file">
+      <created>1678835316743</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1678835316743</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -107,7 +108,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added main files" />
-    <option name="LAST_COMMIT_MESSAGE" value="added main files" />
+    <MESSAGE value="Added validation and adding from file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added validation and adding from file" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

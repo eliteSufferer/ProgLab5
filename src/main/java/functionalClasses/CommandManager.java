@@ -8,6 +8,7 @@ import moviesClasses.Movie;
 import moviesClasses.Movies;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -27,11 +28,11 @@ import java.util.regex.Pattern;
 public class CommandManager {
 
     private static Movies movies;
-    static Scanner chosenScanner = new Scanner(System.in);
+    //static Scanner chosenScanner = new Scanner(System.in);
 
-    //static BufferedInputStream bis = new BufferedInputStream(System.in);
+    static BufferedInputStream bis = new BufferedInputStream(System.in);
 
-    //static BufferedReader currentReader = new BufferedReader(new InputStreamReader(bis));
+    static BufferedReader reader = new BufferedReader(new InputStreamReader(bis));
     static String currentCommand;
 
     private static List<String> executedFiles = new ArrayList<>();
@@ -58,9 +59,13 @@ public class CommandManager {
     public static void suggestNewAction(){
         try {
             System.out.println("Введите команду. Чтобы узнать перечень доступных команд введите help");
-            currentCommand = chosenScanner.nextLine();
+            //currentCommand = chosenScanner.nextLine();
+            currentCommand = reader.readLine();
         } catch (NoSuchElementException e){
             System.out.println("Недопустимая строка, не надо так делать");
+            System.exit(0);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -72,12 +77,14 @@ public class CommandManager {
     public static void startNewAction(String executedCommand){
         try {
             Executor.formCommandHistory(executedCommand.split(" ")[0]);
-            if (Objects.equals(executedCommand.split(" ")[0], "execute_script") && !chosenScanner.equals(new Scanner(System.in)) && executedFiles.contains(executedCommand.split(" ")[1])) {
+            if (Objects.equals(executedCommand.split(" ")[0], "execute_script") && !reader.equals(new BufferedReader(new InputStreamReader(new BufferedInputStream(System.in)))) && executedFiles.contains(executedCommand.split(" ")[1])) {
                 System.out.println("Обнаружена рекурсия! Уберите. ");
                 return;
-            } else if (Objects.equals(executedCommand.split(" ")[0], "execute_script") && (chosenScanner.equals(new Scanner(System.in)) || !executedFiles.contains(executedCommand.split(" ")[1]))) {
+            } else if (Objects.equals(executedCommand.split(" ")[0], "execute_script") && (reader.equals(new BufferedReader(new InputStreamReader(new BufferedInputStream(System.in)))) || !executedFiles.contains(executedCommand.split(" ")[1]))) {
                 Path path = Paths.get(executedCommand.split(" ")[1]);
-                chosenScanner = new Scanner(path);
+                reader = new BufferedReader(new FileReader(path.toFile()));
+                //chosenScanner = new Scanner(path);
+
                 executedFiles.add(executedCommand.split(" ")[1]);
             }
             switch (executedCommand.split(" ")[0]) {
@@ -88,7 +95,7 @@ public class CommandManager {
                 case("remove_greater") -> Executor.removeGreater(readInputNewMovieData());
                 case ("clear") -> Executor.clear();
                 case ("history") -> System.out.println(Executor.getLast8Commands());
-                case ("execute_script") -> FileManager.readFile(chosenScanner, executedCommand.split(" ")[1]);
+                case ("execute_script") -> FileManager.readFile(reader, executedCommand.split(" ")[1]);
                 case ("save") -> FileManager.save();
                 case ("show") -> show();
                 case("filter_by_genre") -> System.out.println(Executor.filterByGenre(MovieGenre.valueOf(executedCommand.split(" ")[1])));
@@ -128,6 +135,8 @@ public class CommandManager {
         }
         catch (Exception e) {
             System.out.println("Ошибка при выполнении команды");
+            e.printStackTrace();
+            System.exit(0);
         }
 
     }
@@ -142,7 +151,8 @@ public class CommandManager {
         while (step < CommandManager.settings.size()) {
             try {
                 System.out.println(CommandManager.settings.get(step).getComment() + ". Тип этого значения: " + CommandManager.settings.get(step).getValueType() + (CommandManager.settings.get(step).getIsRequired() ? ". Обязательное значение" : ". Необязательное значение"));
-                String line = chosenScanner.nextLine().trim();
+                //String line = chosenScanner.nextLine().trim();
+                String line = reader.readLine().trim();
                 if (line.equals("exit")) {System.exit(0);}
                 if (line.length() == 0 && CommandManager.settings.get(step).getIsRequired()) {
                     System.out.println("Значение не может быть пустым");
@@ -233,6 +243,8 @@ public class CommandManager {
                 System.out.println("Введите значение правильного типа данных: " + CommandManager.settings.get(step).getValueType());
             } catch (IllegalArgumentException e) {
                 System.out.println("Введите значение из списка допустимых значений ->");
+            } catch (IOException e) {
+                System.out.println("Возникла ошибка");
             }
         }
         return answers;
