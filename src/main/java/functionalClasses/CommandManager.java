@@ -33,60 +33,17 @@ public class CommandManager {
 
     //static BufferedReader currentReader = new BufferedReader(new InputStreamReader(bis));
     static String currentCommand;
-    public static List<BufferedInputStream> bufferedInputStreamsList;
 
     private static List<String> executedFiles = new ArrayList<>();
 
-    static HashMap<String, String> commandList = new HashMap<>();
-
-
-    static ArrayList<SetValues> settings = new ArrayList<>();
     static HashMap<Integer, Object> answers = new HashMap<>();
 
+    static HashMap<String, String> commandList = CommandList.fillCommandList();
+
+    static ArrayList<SetValues> settings = Settings.fillSettings();
+
+
     /**
-     A map of available commands and their descriptions.
-     */
-
-    static {
-        commandList.put("help", "Вывести справку по доступным командам");
-        commandList.put("info", "Вывести в стандартный поток вывода информацию о коллекции");
-        commandList.put("show", "Вывести в стандартный поток вывода все элементы коллекции в строковом представлении");
-        commandList.put("add {element}", "добавить новый элемент в коллекцию");
-        commandList.put("update id {element}", "обновить значение элемента коллекции, id которого равен заданному");
-        commandList.put("remove_by_id id", "удалить элемент из коллекции по его id");
-        commandList.put("clear", "очистить коллекцию");
-        commandList.put("save", "сохранить коллекцию в файл");
-        commandList.put("execute_script file_name", "считать и исполнить скрипт из указанного файла. В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме.");
-        commandList.put("exit", "завершить программу (без сохранения в файл)");
-        commandList.put("add_if_min {element}", "добавить новый элемент в коллекцию, если его значение меньше, чем у наименьшего элемента этой коллекции");
-        commandList.put("remove_greater {element}", " удалить из коллекции все элементы, превышающие заданный");
-        commandList.put("history", "вывести последние 8 команд (без их аргументов)");
-        commandList.put("remove_any_by_oscars_count oscarsCount", "удалить из коллекции один элемент, значение поля oscarsCount которого эквивалентно заданному");
-        commandList.put("filter_by_genre genre", "вывести элементы, значение поля genre которых равно заданному");
-        commandList.put("print_descending", "вывести элементы коллекции в порядке убывания");
-
-        /**
-
-         A list of settings for movie objects.
-         */
-        settings.add(new SetValues(0, "String", true, "Название фильма: "));
-        settings.add(new SetValues(1, "double", true, "Координата X (можно дробное, больше -201): "));
-        settings.add(new SetValues(2, "float", true, "Координата Y (тоже можно дробное, больше -838): "));
-        settings.add(new SetValues(3, "int", true, "Количество Оскаров у фильма (больше 0): "));
-        settings.add(new SetValues(4, "Integer", true, "Длина (целое, больше 0): "));
-        settings.add(new SetValues(5, "MovieGenre", true, "Жанр фильма: " + Arrays.asList(MovieGenre.values())));
-        settings.add(new SetValues(6, "MpaaRating", false, "Рейтинг фильма: "  + Arrays.asList(MpaaRating.values())));
-        settings.add(new SetValues(7, "String", true, "Данные режиссера. Имя: "));
-        settings.add(new SetValues(8, "LocalDate", false, "Дата рождения: "));
-        settings.add(new SetValues(9, "String", false, "Данные паспорта: "));
-        settings.add(new SetValues(10, "Color", false, "Цвет волос: " + Arrays.asList(Color.values())));
-        settings.add(new SetValues(11, "float", true, "Местоположение режиссера. Координата Х: "));
-        settings.add(new SetValues(12, "Integer", true, "Координата Y: "));
-        settings.add(new SetValues(13, "Float", true, "Координата Z: "));
-        settings.add(new SetValues(14, "String", false, "Название локации: "));
-    }
-    /**
-
      Sets the Movies collection to perform operations on.
      @param movies the Movies collection to set
      */
@@ -103,10 +60,8 @@ public class CommandManager {
             System.out.println("Введите команду. Чтобы узнать перечень доступных команд введите help");
             currentCommand = chosenScanner.nextLine();
         } catch (NoSuchElementException e){
-            System.out.println("Недопустимая строка");
-            System.exit(0);
+            System.out.println("Недопустимая строка, не надо так делать");
         }
-
     }
 
     /**
@@ -126,8 +81,8 @@ public class CommandManager {
                 executedFiles.add(executedCommand.split(" ")[1]);
             }
             switch (executedCommand.split(" ")[0]) {
-                case ("help") -> help();
-                case ("info") -> info();
+                case "help" -> help();
+                case "info" -> info();
                 case ("add") -> Executor.addMovie(readInputNewMovieData());
                 case ("add_if_min") -> Executor.addIfMin(readInputNewMovieData());
                 case("remove_greater") -> Executor.removeGreater(readInputNewMovieData());
@@ -172,7 +127,7 @@ public class CommandManager {
             System.out.println("Такого файла не существует");
         }
         catch (Exception e) {
-            System.out.println("Ошибка при выполнении команды");;
+            System.out.println("Ошибка при выполнении команды");
         }
 
     }
@@ -199,114 +154,114 @@ public class CommandManager {
                         continue;
                     }
                 }
-                    switch (CommandManager.settings.get(step).getValueType()) {
-                        case ("float"), ("Float") -> {
-                            float parsedValue = Float.parseFloat(line);
-                            if ((settings.get(step).getKey() == 2 && parsedValue <= -838) ) {
-                                System.out.println("Значение должно быть больше -838");
-                            }
-                            else {
-                                answers.put(step, parsedValue);
-                                step += 1;
-                            }
-                            answers.put(step, parsedValue);
+                switch (CommandManager.settings.get(step).getValueType()) {
+                    case ("float"), ("Float") -> {
+                        float parsedValue = (Float.parseFloat(line));
+                        if ((settings.get(step).getKey() == 2 && parsedValue <= -838) ) {
+                            System.out.println("Значение должно быть больше -838");
                         }
-
-                        case ("double") -> {
-                            double parsedValue = Double.parseDouble(line);
-                            if (settings.get(step).getKey() == 2 && parsedValue <= -201){
-                                System.out.println("Значение должно быть больше -201");
-                            }
-                            else {
-                                answers.put(step, parsedValue);
-                                step += 1;
-                            }
-                        }
-
-                        case ("LocalDate") -> {
-                            try {
-                                LocalDate parsedValue = LocalDate.parse(line);
-                                answers.put(step, parsedValue);
-                                step += 1;
-                            }
-                            catch (DateTimeParseException e){
-                                System.out.println("Введите валидную дату в формате yyyy-mm-dd");
-                            }
-                        }
-
-                        case ("int"), ("Integer") -> {
-                            int parsedValue = Integer.parseInt(line);
-                            if ((settings.get(step).getKey() == 3 || settings.get(step).getKey() == 4) && parsedValue <= 0) {
-                                System.out.println("Значение должно быть больше нуля");
-                            } else {
-                                answers.put(step, parsedValue);
-                                step += 1;
-                            }
-
-                        }
-                        case ("String") -> {
-                            if ((settings.get(step).getKey() == 0 || settings.get(step).getKey() == 7 || settings.get(step).getKey() == 9) && line.trim().isEmpty()) {
-                                System.out.println("Значение не может быть пустым");
-                            } else {
-                                if (settings.get(step).getKey() == 9 && line.length() < 10) {
-                                    System.out.println("Значение должно состоять не менее чем из 10 символов");
-                                } else {
-                                    answers.put(step, line);
-                                    step += 1;
-                                }
-                            }
-
-                        }
-                        case ("MovieGenre") -> {
-                            MovieGenre parsedValue = Enum.valueOf(MovieGenre.class, line);
+                        else {
                             answers.put(step, parsedValue);
                             step += 1;
                         }
-                        case ("MpaaRating") -> {
-                            MpaaRating parsedValue = Enum.valueOf(MpaaRating.class, line);
+                        answers.put(step, parsedValue);
+                    }
+
+                    case ("double") -> {
+                        double parsedValue = Double.parseDouble(line);
+                        if (settings.get(step).getKey() == 1 && parsedValue <= -201){
+                            System.out.println("Значение должно быть больше -201");
+                        }
+                        else {
                             answers.put(step, parsedValue);
                             step += 1;
                         }
-                        case ("Color") -> {
-                            Color parsedValue = Enum.valueOf(Color.class, line);
+                    }
+
+                    case ("LocalDate") -> {
+                        try {
+                            LocalDate parsedValue = LocalDate.parse(line);
+                            answers.put(step, parsedValue);
+                            step += 1;
+                        }
+                        catch (DateTimeParseException e){
+                            System.out.println("Введите валидную дату в формате yyyy-mm-dd");
+                        }
+                    }
+
+                    case ("int"), ("Integer") -> {
+                        int parsedValue = Integer.parseInt(line);
+                        if ((settings.get(step).getKey() == 3 || settings.get(step).getKey() == 4) && parsedValue <= 0) {
+                            System.out.println("Значение должно быть больше нуля");
+                        } else {
                             answers.put(step, parsedValue);
                             step += 1;
                         }
 
                     }
-                } catch (NumberFormatException e) {
-                    System.out.println("Введите значение правильного типа данных: " + CommandManager.settings.get(step).getValueType());
-                } catch (IllegalArgumentException e) {
-                    System.out.println("Введите значение из списка допустимых значений ->");
+                    case ("String") -> {
+                        if ((settings.get(step).getKey() == 0 || settings.get(step).getKey() == 7 || settings.get(step).getKey() == 9) && line.trim().isEmpty()) {
+                            System.out.println("Значение не может быть пустым");
+                        } else {
+                            if (settings.get(step).getKey() == 9 && line.length() < 10) {
+                                System.out.println("Значение должно состоять не менее чем из 10 символов");
+                            } else {
+                                answers.put(step, line);
+                                step += 1;
+                            }
+                        }
+
+                    }
+                    case ("MovieGenre") -> {
+                        MovieGenre parsedValue = Enum.valueOf(MovieGenre.class, line);
+                        answers.put(step, parsedValue);
+                        step += 1;
+                    }
+                    case ("MpaaRating") -> {
+                        MpaaRating parsedValue = Enum.valueOf(MpaaRating.class, line);
+                        answers.put(step, parsedValue);
+                        step += 1;
+                    }
+                    case ("Color") -> {
+                        Color parsedValue = Enum.valueOf(Color.class, line);
+                        answers.put(step, parsedValue);
+                        step += 1;
+                    }
+
                 }
+            } catch (NumberFormatException e) {
+                System.out.println("Введите значение правильного типа данных: " + CommandManager.settings.get(step).getValueType());
+            } catch (IllegalArgumentException e) {
+                System.out.println("Введите значение из списка допустимых значений ->");
+            }
         }
-            return answers;
-        }
+        return answers;
+    }
     /**
      * Prints the list of available commands and their descriptions.
      */
-        public static void help() {
-            for (var entry : commandList.entrySet()) {
-                System.out.println(entry.getKey() + " - " + entry.getValue());
-            }
+    public static void help() {
+        for (var entry : commandList.entrySet()) {
+            System.out.println(entry.getKey() + " - " + entry.getValue());
         }
+    }
 
     /**
      * Prints information about the current state of the collection, such as the class of the elements, the initialization date,
      * the number of elements, the list of movies in the collection and the executed files.
      */
-        public static void info() {
-            System.out.println("Класс элементов коллекции: " + movies.getClass());
-            System.out.println("Дата и время ининциализации коллекции: " + movies.getInitializationDate());
-            System.out.println("Количество элементов в колллекции: " + movies.getMoviesCount());
+    public static void info() {
+        System.out.println("Класс элементов коллекции: " + movies.getClass());
+        System.out.println("Дата и время ининциализации коллекции: " + movies.getInitializationDate());
+        System.out.println("Количество элементов в колллекции: " + movies.getMoviesCount());
 
-            System.out.println("Список имеющихся в коллекции фильмов (id + название)");
+        System.out.println("Список имеющихся в коллекции фильмов (id + название)");
 
-            for (Movie movie : movies.getMovies()) {
-                System.out.println(movie.getId() + " - " + movie.getName());
-            }
-            System.out.println("Исполняемые в данный момент файлы: " + getExecutedFiles());
+        for (Movie movie : movies.getMovies()) {
+            System.out.println(movie.getId() + " - " + movie.getName());
         }
+        System.out.println("Исполняемые в данный момент файлы: " + getExecutedFiles());
+    }
     /**
      * Prints the information of all the movies in the collection, sorted by their natural order.
      */
@@ -324,15 +279,15 @@ public class CommandManager {
      * @return the last executed command.
      */
 
-        public static String getExecutedCommand() {
-            return currentCommand;
-        }
+    public static String getExecutedCommand() {
+        return currentCommand;
+    }
     /**
      * Returns a list with the names of the executed files.
      * @return a list with the names of the executed files.
      */
-        public static List getExecutedFiles() {
-            return executedFiles;
-        }
+    public static List getExecutedFiles() {
+        return executedFiles;
     }
+}
 

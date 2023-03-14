@@ -27,7 +27,6 @@ public class Executor {
     }
 
     /**
-
      Adds a new movie to the movie list.
      @param data the data for the new movie
      */

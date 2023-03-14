@@ -5,10 +5,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import exceptions.InvalidFieldException;
 import moviesClasses.Movie;
 import moviesClasses.Movies;
-import validators.CoordsValidator;
-import validators.LocationValidator;
-import validators.MovieValidator;
-import validators.PersonValidator;
+import validators.*;
 
 import java.io.*;
 import java.util.*;
@@ -94,32 +91,53 @@ public class FileManager {
         FileManager.movies = movies;
     }
 
+    private static int countLines(String file){
+        int lines = 0;
+        Scanner sc = new Scanner(file);
+        while (sc.hasNextLine()){
+            lines ++;
+        }
+        return lines;
+    }
     /**
      This method reads a file and executes the commands line by line.
      @param fileScanner The scanner object for the file.
      @param fileName The name of the file.
      */
     public static void readFile(Scanner fileScanner, String fileName){
-        while (fileScanner.hasNextLine()) {
-            String line = fileScanner.nextLine();
-            if (line.equals("add")) {
-                try {
-                    int step = 0;
-                    while (answers.size() <= 15){
-                        answers.put(step, line);
-                        step ++;
+        try {
+            String line;
+            boolean shouldAdd = false;
+            while (fileScanner.hasNextLine()) {
+                line = fileScanner.nextLine();
+                if (line.equals("add")) {
+                    shouldAdd = true;
+                    continue;
+                }
+                if (shouldAdd) {
+                    for (int i = 0; i < 15; i++) {
+                        answers.put(i, line);
+                        AddFromFileValidator.checkAnswers(i, answers);
+                        line = fileScanner.nextLine();
                     }
+                    shouldAdd = false;
                     Executor.addMovie(answers);
-                } catch (ClassCastException e){
-                    e.printStackTrace();
                 }
-                catch (Exception e){
-                    System.out.println("Неверные данные после команды add");
+                else {
+                    CommandManager.startNewAction(line);
                 }
-
             }
-            CommandManager.startNewAction(line);
         }
+        catch (InvalidFieldException e){
+            System.out.println(e.getMessage());
+        }
+        catch (NoSuchElementException e){
+            System.out.println("Достигнут конец файла");
+        }
+        catch (RuntimeException e){
+            System.out.println("Ошибка при чтении файла");
+        }
+
         fileScanner.close();
         CommandManager.getExecutedFiles().remove(fileName);
         CommandManager.chosenScanner = new Scanner(System.in);

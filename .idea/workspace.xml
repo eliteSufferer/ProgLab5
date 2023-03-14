@@ -9,23 +9,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07f85c5b-ddba-4e1c-8aad-654647c8b0c6" name="Changes" comment="">
+    <list default="true" id="07f85c5b-ddba-4e1c-8aad-654647c8b0c6" name="Changes" comment="added main files">
+      <change afterPath="$PROJECT_DIR$/src/main/java/functionalClasses/CommandList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/functionalClasses/Settings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/validators/AddFromFileValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/exceptions/InvalidFieldException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/exceptions/InvalidFieldException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/functionalClasses/CommandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/functionalClasses/CommandManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/functionalClasses/Executor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/functionalClasses/Executor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/functionalClasses/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/functionalClasses/FileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/functionalClasses/FilePathInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/functionalClasses/FilePathInitializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/functionalClasses/test.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/functionalClasses/test.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/moviesClasses/Coordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/moviesClasses/Coordinates.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/moviesClasses/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/moviesClasses/Location.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/moviesClasses/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/moviesClasses/Movie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/moviesClasses/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/moviesClasses/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/validators/CoordsValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validators/CoordsValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/validators/MovieValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validators/MovieValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/validators/PersonValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validators/PersonValidator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,23 +45,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Sergey/IdeaProjects/ProgLab5/src/main",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.20344828",
-    "settings.editor.selected.configurable": "editor.preferences.completion"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Sergey/IdeaProjects/ProgLab5/src/main&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.20344828&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.completion&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Sergey\IdeaProjects\ProgLab5\src\main" />
@@ -84,8 +78,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1678625781082</updated>
-      <workItem from="1678625782577" duration="39956000" />
+      <workItem from="1678625782577" duration="71700000" />
+      <workItem from="1678817226638" duration="16646000" />
     </task>
+    <task id="LOCAL-00001" summary="added main files">
+      <created>1678719009985</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1678719009985</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -101,6 +104,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added main files" />
+    <option name="LAST_COMMIT_MESSAGE" value="added main files" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

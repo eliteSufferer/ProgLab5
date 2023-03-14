@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import javax.management.ObjectName;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -66,20 +67,20 @@ public class Movie implements Comparable<Object>{
     public Movie(int id, HashMap data) {
         this.id = id;
         this.name = (String) data.get(0);
-        this.coordinates = new Coordinates((double) data.get(1), (float) data.get(2));
+        this.coordinates = new Coordinates(Double.parseDouble(data.get(1).toString()), Float.parseFloat(data.get(2).toString()));
         this.creationDate = LocalDate.now();
-        this.oscarsCount = (int) data.get(3);
-        this.length = (Integer) data.get(4);
-        this.genre = (MovieGenre) data.get(5);
+        this.oscarsCount =  Integer.parseInt(data.get(3).toString());
+        this.length = Integer.parseInt(data.get(4).toString());
+        this.genre = Enum.valueOf(MovieGenre.class, data.get(5).toString());
         if (data.get(6) == null){
             this.mpaaRating = null;
         }
         else {
-            this.mpaaRating = (MpaaRating) data.get(6);
+            this.mpaaRating = Enum.valueOf(MpaaRating.class, data.get(6).toString());
         }
-        this.director = new Person((String) data.get(7), (LocalDate) data.get(8), (data.get(9) == null ? null : (String) data.get(9)),
-                (data.get(10) == null ? null : (Color) data.get(10)),
-                new Location((float) data.get(11), (Integer) data.get(12), (Float) data.get(13), (data.get(14) == null ? null : (String) data.get(14))));
+        this.director = new Person((String) data.get(7), (data.get(8) != null ? LocalDate.parse(data.get(8).toString()) : null), (data.get(9) == null ? null : data.get(9).toString()),
+                (data.get(10) == null ? null : Enum.valueOf(Color.class, data.get(10).toString())),
+                new Location(Float.parseFloat(data.get(11).toString()), Integer.parseInt(data.get(12).toString()), Float.parseFloat(data.get(13).toString()), (data.get(14) == null ? null : (String) data.get(14))));
     }
 
     /**
@@ -89,20 +90,20 @@ public class Movie implements Comparable<Object>{
      */
     public void updateMovies(HashMap data) {
         this.name = (String) data.get(0);
-        this.coordinates = new Coordinates((double) data.get(1), (float) data.get(2));
+        this.coordinates = new Coordinates(Double.parseDouble(data.get(1).toString()), Float.parseFloat(data.get(2).toString()));
         this.creationDate = LocalDate.now();
-        this.oscarsCount = (int) data.get(3);
-        this.length = (Integer) data.get(4);
-        this.genre = (MovieGenre) data.get(5);
+        this.oscarsCount =  Integer.parseInt(data.get(3).toString());
+        this.length = Integer.parseInt(data.get(4).toString());
+        this.genre = Enum.valueOf(MovieGenre.class, data.get(5).toString());
         if (data.get(6) == null){
             this.mpaaRating = null;
         }
         else {
-            this.mpaaRating = (MpaaRating) data.get(6);
+            this.mpaaRating = Enum.valueOf(MpaaRating.class, data.get(6).toString());
         }
-        this.director = new Person((String) data.get(7), (LocalDate) data.get(8), (data.get(9) == null ? null : (String) data.get(9)),
-                (data.get(10) == null ? null : (Color) data.get(10)),
-                new Location((float) data.get(11), (Integer) data.get(12), (Float) data.get(13), (data.get(14) == null ? null : (String) data.get(14))));
+        this.director = new Person((String) data.get(7), (data.get(8) != null ? LocalDate.parse(data.get(8).toString()) : null), (data.get(9) == null ? null : data.get(9).toString()),
+                (data.get(10) == null ? null : Enum.valueOf(Color.class, data.get(10).toString())),
+                new Location(Float.parseFloat(data.get(11).toString()), Integer.parseInt(data.get(12).toString()), Float.parseFloat(data.get(13).toString()), (data.get(14) == null ? null : (String) data.get(14))));
     }
 
     /**
