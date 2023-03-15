@@ -51,7 +51,7 @@ public class Main {
                 CommandManager.suggestNewAction();
             }
         } catch (ExceptionInInitializerError e) {
-            System.out.println("Произошла ошибка при чтении файла");
+            System.out.println("Произошла ошибка при чтении JSON файла");
         }
     }
 }

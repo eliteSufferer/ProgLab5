@@ -9,11 +9,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07f85c5b-ddba-4e1c-8aad-654647c8b0c6" name="Changes" comment="Added validation and adding from file">
+    <list default="true" id="07f85c5b-ddba-4e1c-8aad-654647c8b0c6" name="Changes" comment="Changed Scanners To BufferedReaders and fixed &quot;add&quot; from file">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/functionalClasses/CommandList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/functionalClasses/CommandList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/functionalClasses/CommandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/functionalClasses/CommandManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/functionalClasses/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/functionalClasses/FileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/functionalClasses/FilePathInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/functionalClasses/FilePathInitializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/functionalClasses/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/functionalClasses/Settings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/validators/AddFromFileValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validators/AddFromFileValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/validators/CoordsValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validators/CoordsValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/validators/LocationValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validators/LocationValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/validators/MovieValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validators/MovieValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/validators/PersonValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/validators/PersonValidator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +81,7 @@
       <option name="presentableId" value="Default" />
       <updated>1678625781082</updated>
       <workItem from="1678625782577" duration="71700000" />
-      <workItem from="1678817226638" duration="18833000" />
+      <workItem from="1678817226638" duration="21559000" />
     </task>
     <task id="LOCAL-00001" summary="added main files">
       <created>1678719009985</created>
@@ -89,7 +97,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678835316743</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Changed Scanners To BufferedReaders and fixed &quot;add&quot; from file">
+      <created>1678837537843</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1678837537843</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -109,7 +124,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added main files" />
     <MESSAGE value="Added validation and adding from file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added validation and adding from file" />
+    <MESSAGE value="Changed Scanners To BufferedReaders and fixed &quot;add&quot; from file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed Scanners To BufferedReaders and fixed &quot;add&quot; from file" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -10,12 +10,6 @@ import java.util.HashMap;
 
 public class AddFromFileValidator {
 
-    /**
-     *
-     * @param key
-     * @param answers
-     * @throws InvalidFieldException
-     */
 
     public static void checkAnswers(int key, HashMap<Integer, Object> answers) throws InvalidFieldException{
         switch (key){

@@ -10,13 +10,12 @@ import validators.*;
 import java.io.*;
 import java.util.*;
 
-
+/**
+ FileManager class provides functionality to fill the Movies object from the input file, read a file
+ and execute commands line by line for execute_script command and save the current Movies object to the file.
+ */
 public class FileManager {
-    /**
 
-     FileManager class provides functionality to fill the Movies object from the input file, read a file
-     and execute commands line by line and save the current Movies object to the file.
-     */
     private static Movies movies;
     static ObjectMapper objectMapper = new ObjectMapper();
 
@@ -25,8 +24,9 @@ public class FileManager {
 
 
     /**
-     This method reads the input file and fill the Movies object with the contents of the file.
+     This method reads the input file, validates its fields and fill the Movies object with the contents of the file.
      @return The Movies object created from the input file.
+     @throws InvalidFieldException if an error with validation happens
      */
     public static Movies fill(String[] value) throws InvalidFieldException{
         try {

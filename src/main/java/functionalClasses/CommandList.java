@@ -2,9 +2,22 @@ package functionalClasses;
 
 import java.util.HashMap;
 
+/**
+ The CommandList class contains a static HashMap which stores the list of available commands
+ and their descriptions. It also has a static method fillCommandList() which fills the commandList with the
+ commands and their descriptions.
+ */
 public class CommandList {
+    /**
+     A static HashMap that stores the list of available commands and their descriptions.
+     The key of the HashMap is the command name and the value is its description.
+     */
     private static HashMap<String, String> commandList = new HashMap<>();
 
+    /**
+     This method fills the commandList HashMap with the available commands and their descriptions.
+     @return The commandList HashMap filled with commands and their descriptions.
+     */
     public static HashMap<String, String> fillCommandList(){
         commandList.put("help", "Вывести справку по доступным командам");
         commandList.put("info", "Вывести в стандартный поток вывода информацию о коллекции");

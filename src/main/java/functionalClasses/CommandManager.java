@@ -272,7 +272,7 @@ public class CommandManager {
         for (Movie movie : movies.getMovies()) {
             System.out.println(movie.getId() + " - " + movie.getName());
         }
-        System.out.println("Исполняемые в данный момент файлы: " + getExecutedFiles());
+
     }
     /**
      * Prints the information of all the movies in the collection, sorted by their natural order.

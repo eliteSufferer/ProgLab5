@@ -8,9 +8,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
+/**
+
+ The Settings class represents the settings for creating a new Movie object.
+ It contains a list of {@link SetValues} objects that specify the data type,
+ prompt message, and optional parameters for each movie attribute.
+ */
 public class Settings {
     private static ArrayList<SetValues> settings = new ArrayList<>();
 
+    /**
+     Fills the settings list with default {@link SetValues} objects for each movie attribute.
+     @return the list of {@link SetValues} objects representing the settings for creating a new Movie object.
+     */
     public static ArrayList<SetValues> fillSettings(){
         settings.add(new SetValues(0, "String", true, "Название фильма: "));
         settings.add(new SetValues(1, "double", true, "Координата X (можно дробное, больше -201): "));
@@ -19,7 +29,7 @@ public class Settings {
         settings.add(new SetValues(4, "Integer", true, "Длина (целое, больше 0): "));
         settings.add(new SetValues(5, "MovieGenre", true, "Жанр фильма: " + Arrays.asList(MovieGenre.values())));
         settings.add(new SetValues(6, "MpaaRating", false, "Рейтинг фильма: "  + Arrays.asList(MpaaRating.values())));
-        settings.add(new SetValues(7, "String", true, "Данные режиссера. Имя: "));
+
         settings.add(new SetValues(8, "LocalDate", false, "Дата рождения: "));
         settings.add(new SetValues(9, "String", false, "Данные паспорта (строка не короче 10 симв.): "));
         settings.add(new SetValues(10, "Color", false, "Цвет волос: " + Arrays.asList(Color.values())));
