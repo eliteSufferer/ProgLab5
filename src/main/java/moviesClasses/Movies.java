@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.*;
 
 /**
-
  A class representing a collection of Movie objects.
  */
 public class Movies{

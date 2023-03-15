@@ -135,7 +135,6 @@ public class CommandManager {
         }
         catch (Exception e) {
             System.out.println("Ошибка при выполнении команды");
-            e.printStackTrace();
             System.exit(0);
         }
 
@@ -272,6 +271,7 @@ public class CommandManager {
         for (Movie movie : movies.getMovies()) {
             System.out.println(movie.getId() + " - " + movie.getName());
         }
+        System.out.println("Исполняемые в данный момент файлы: " + getExecutedFiles());
 
     }
     /**

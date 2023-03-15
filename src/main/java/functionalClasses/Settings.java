@@ -29,7 +29,7 @@ public class Settings {
         settings.add(new SetValues(4, "Integer", true, "Длина (целое, больше 0): "));
         settings.add(new SetValues(5, "MovieGenre", true, "Жанр фильма: " + Arrays.asList(MovieGenre.values())));
         settings.add(new SetValues(6, "MpaaRating", false, "Рейтинг фильма: "  + Arrays.asList(MpaaRating.values())));
-
+        settings.add(new SetValues(7, "String", true, "Данные режиссера. Имя: "));
         settings.add(new SetValues(8, "LocalDate", false, "Дата рождения: "));
         settings.add(new SetValues(9, "String", false, "Данные паспорта (строка не короче 10 симв.): "));
         settings.add(new SetValues(10, "Color", false, "Цвет волос: " + Arrays.asList(Color.values())));
