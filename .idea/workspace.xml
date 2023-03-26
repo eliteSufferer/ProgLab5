@@ -9,10 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07f85c5b-ddba-4e1c-8aad-654647c8b0c6" name="Changes" comment="Changed Scanners To BufferedReaders and fixed &quot;add&quot; from file">
+    <list default="true" id="07f85c5b-ddba-4e1c-8aad-654647c8b0c6" name="Changes" comment="Final update">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/functionalClasses/CommandManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/functionalClasses/CommandManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/moviesClasses/Movies.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/moviesClasses/Movies.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,11 +49,16 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Sergey/IdeaProjects/ProgLab5/src/main",
-    "project.structure.last.edited": "Modules",
+    "last_opened_file_path": "C:/Users/Sergey/IdeaProjects/ProgLab5",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.20344828",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -62,6 +68,17 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Sergey\IdeaProjects\ProgLab5\src\main\java" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="ProgLab5.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/ProgLab5_jar/ProgLab5.jar" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JAR Application.ProgLab5.jar" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -73,7 +90,14 @@
       <updated>1678625781082</updated>
       <workItem from="1678625782577" duration="71700000" />
       <workItem from="1678817226638" duration="21559000" />
-      <workItem from="1678865333313" duration="3813000" />
+      <workItem from="1678865333313" duration="5143000" />
+      <workItem from="1678981806529" duration="37000" />
+      <workItem from="1679064587783" duration="642000" />
+      <workItem from="1679065236526" duration="1841000" />
+      <workItem from="1679338395824" duration="3641000" />
+      <workItem from="1679494488575" duration="869000" />
+      <workItem from="1679818089855" duration="2393000" />
+      <workItem from="1679820644935" duration="366000" />
     </task>
     <task id="LOCAL-00001" summary="added main files">
       <created>1678719009985</created>
@@ -96,7 +120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678837537843</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fixed bugs with JavaDoc">
+      <created>1678870382092</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1678870382093</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -117,7 +148,9 @@
     <MESSAGE value="added main files" />
     <MESSAGE value="Added validation and adding from file" />
     <MESSAGE value="Changed Scanners To BufferedReaders and fixed &quot;add&quot; from file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed Scanners To BufferedReaders and fixed &quot;add&quot; from file" />
+    <MESSAGE value="Fixed bugs with JavaDoc" />
+    <MESSAGE value="Final update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final update" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
