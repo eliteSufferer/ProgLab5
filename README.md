@@ -78,60 +78,60 @@ print_descending : вывести элементы коллекции в пор�
 
 Описание хранимых в коллекции классов:
 
-  public class Movie {
-      private Long id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
-      private String name; //Поле не может быть null, Строка не может быть пустой
-      private Coordinates coordinates; //Поле не может быть null
-      private java.time.LocalDate creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
-      private long oscarsCount; //Значение поля должно быть больше 0
-      private Long length; //Поле не может быть null, Значение поля должно быть больше 0
-      private MovieGenre genre; //Поле не может быть null
-      private MpaaRating mpaaRating; //Поле может быть null
-      private Person director; //Поле не может быть null
-  }
+    public class Movie {
+        private Long id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+        private String name; //Поле не может быть null, Строка не может быть пустой
+        private Coordinates coordinates; //Поле не может быть null
+        private java.time.LocalDate creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
+        private long oscarsCount; //Значение поля должно быть больше 0
+        private Long length; //Поле не может быть null, Значение поля должно быть больше 0
+        private MovieGenre genre; //Поле не может быть null
+        private MpaaRating mpaaRating; //Поле может быть null
+        private Person director; //Поле не может быть null
+    }
+  
+    
+    public class Coordinates {
+        private double x; //Значение поля должно быть больше -201
+        private float y; //Значение поля должно быть больше -838
+    }
 
   
-  public class Coordinates {
-      private double x; //Значение поля должно быть больше -201
-      private float y; //Значение поля должно быть больше -838
-  }
+    public class Person {
+        private String name; //Поле не может быть null, Строка не может быть пустой
+        private java.time.LocalDate birthday; //Поле может быть null
+        private String passportID; //Строка не может быть пустой, Длина строки должна быть не меньше 10, Поле может быть null
+        private Color hairColor; //Поле может быть null
+        private Location location; //Поле не может быть null
+    }
 
   
-  public class Person {
-      private String name; //Поле не может быть null, Строка не может быть пустой
-      private java.time.LocalDate birthday; //Поле может быть null
-      private String passportID; //Строка не может быть пустой, Длина строки должна быть не меньше 10, Поле может быть null
-      private Color hairColor; //Поле может быть null
-      private Location location; //Поле не может быть null
-  }
+    public class Location {
+        private float x;
+        private int y;
+        private long z;
+        private String name; //Поле может быть null
+    }
 
   
-  public class Location {
-      private float x;
-      private int y;
-      private long z;
-      private String name; //Поле может быть null
-  }
-
+    public enum MovieGenre {
+        WESTERN,
+        ADVENTURE,
+        FANTASY,
+        SCIENCE_FICTION;
+    }
   
-  public enum MovieGenre {
-      WESTERN,
-      ADVENTURE,
-      FANTASY,
-      SCIENCE_FICTION;
-  }
-
+    
+    public enum MpaaRating {
+        G,
+        PG,
+        PG_13;
+    }
   
-  public enum MpaaRating {
-      G,
-      PG,
-      PG_13;
-  }
-
-  
-  public enum Color {
-      RED,
-      BLACK,
-      BLUE,
-      YELLOW;
-  }
+    
+    public enum Color {
+        RED,
+        BLACK,
+        BLUE,
+        YELLOW;
+    }
